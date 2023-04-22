@@ -18,5 +18,11 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #e6e9fa;
+}
+
+.signOUT {
+  color: white;
+  background-color: #940d20;
+  border: none;
 }

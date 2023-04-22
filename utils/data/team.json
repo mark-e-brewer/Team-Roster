@@ -1,0 +1,16 @@
+{
+  "-MiBsfuTafbEQ7eAULxV" : {
+    "image" : "url.com",
+    "name" : "john",
+    "role" : "player",
+    "uid" : "123uid",
+    "firebaseKey": "123key"
+  },
+  "-MiBt86VzkC-EGmJnxjm" : {
+    "image" : "url2.com",
+    "name" : "bob",
+    "role" : "player",
+    "uid" : "12335uid",
+    "firebaseKey": "12335key"
+  }
+}
