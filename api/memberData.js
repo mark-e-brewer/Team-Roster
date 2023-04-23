@@ -2,7 +2,7 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-const getMembers = (uid) => new Promise((resolve, reject) => {
+const getMembersByUid = (uid) => new Promise((resolve, reject) => {
   fetch(`${dbUrl}/team.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
@@ -11,6 +11,30 @@ const getMembers = (uid) => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+const getTeams = () => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+const getMembersOfTeam = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams/${firebaseKey}.json`, {
+    method: 'GET',
+    header: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((respone) => respone.json())
+    .then((data) => console.warn(resolve(Object.values(data))))
     .catch(reject);
 });
 
@@ -65,7 +89,9 @@ const updateMember = (payload) => new Promise((resolve, reject) => {
 });
 
 export {
-  getMembers,
+  getMembersByUid,
+  getTeams,
+  getMembersOfTeam,
   createMember,
   deleteSingleMember,
   getSingleMember,
