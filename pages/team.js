@@ -1,36 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getMembers } from '../api/memberData';
-import TeamMemCard from '../components/TeamMemCard';
-import { useAuth } from '../utils/context/authContext';
+import { getTeams } from '../api/memberData';
+import TeamsCard from '../components/TeamsCard';
 
-export default function TeamMemPage({ searchQuery }) {
-  const [members, setMembers] = useState([]);
-  const { user } = useAuth();
-  const getAllMembers = () => {
-    getMembers(user.uid).then(setMembers);
+export default function TeamsPage({ searchQuery }) {
+  const [teams, setTeams] = useState([]);
+  const getAllTeams = () => {
+    getTeams().then(setTeams);
   };
 
   useEffect(() => {
-    getAllMembers();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    getAllTeams();
   }, []);
 
-  const filteredMembers = members.filter((mem) => mem.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredTeams = teams.filter((team) => team.teamName.toLowerCase().includes(searchQuery.toLowerCase()));
+
   return (
     <>
-      <h1 className="text-center">Team Members</h1>
+      <h1 className="text-center">Teams</h1>
       <div className="d-flex flex-wrap">
-        {filteredMembers.map((mem) => <TeamMemCard key={mem.firebaseKey} memberObj={mem} onUpdate={getAllMembers} />)}
+        {filteredTeams.map((team) => <TeamsCard key={team.firebaseKey} teamObj={team} />)}
       </div>
     </>
   );
 }
 
-TeamMemPage.propTypes = {
+TeamsPage.propTypes = {
   searchQuery: PropTypes.string,
 };
 
-TeamMemPage.defaultProps = {
+TeamsPage.defaultProps = {
   searchQuery: '',
 };

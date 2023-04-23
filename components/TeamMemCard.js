@@ -21,7 +21,7 @@ export default function TeamMemCard({ memberObj, onUpdate }) {
         <hr />
       </Card.Body>
       <div className="text-center bottom-center">
-        <Link href={`/new/${memberObj.firebaseKey}`} passHref>
+        <Link href={`/newMem/${memberObj.firebaseKey}`} passHref>
           <Button variant="primary" className="editBtn">Edit</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisMember} className="m-2 deleteBtn">
@@ -39,6 +39,7 @@ TeamMemCard.propTypes = {
     role: PropTypes.string,
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
+    team: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

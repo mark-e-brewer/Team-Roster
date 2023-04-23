@@ -15,9 +15,7 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Link passHref href="/">
-          <Navbar.Brand className="">A-Team</Navbar.Brand>
-        </Link>
+        <Navbar.Brand className="">A-Team</Navbar.Brand>
         <Form className="d-flex">
           <Form.Control
             type="search"
@@ -36,7 +34,7 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
               <Nav.Link>Home</Nav.Link>
             </Link>
             <Link passHref href="/team">
-              <Nav.Link>Team</Nav.Link>
+              <Nav.Link>Teams</Nav.Link>
             </Link>
             <Link passHref href="/new">
               <Nav.Link>New</Nav.Link>
