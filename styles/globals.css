@@ -37,3 +37,7 @@ body {
   background-color: #232ca1;
   border: none;
 }
+
+.mem-card {
+  border-radius: 8px;
+}

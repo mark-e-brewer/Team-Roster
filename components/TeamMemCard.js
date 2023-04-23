@@ -13,8 +13,8 @@ export default function TeamMemCard({ memberObj, onUpdate }) {
   };
 
   return (
-    <Card className="card" style={{ width: '18rem', margin: '8px' }}>
-      <Card.Img variant="top" src={memberObj.image} alt={memberObj.name} style={{ height: '270px' }} />
+    <Card className="card mem-card" style={{ width: '15rem', margin: '8px' }}>
+      <Card.Img variant="top" src={memberObj.image} alt={memberObj.name} style={{ height: '222px' }} />
       <Card.Body className="text-center">
         <Card.Title>{memberObj.name}</Card.Title>
         <Card.Subtitle>{memberObj.role}</Card.Subtitle>

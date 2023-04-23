@@ -1,18 +1,33 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 import {
-  Navbar, Container, Nav, Button,
+  Navbar, Container, Nav, Button, Form,
 } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
 
-export default function NavBar() {
+export default function NavBar({ searchQuery, setSearchQuery }) {
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Link passHref href="/">
-          <Navbar.Brand>CHANGE ME</Navbar.Brand>
+          <Navbar.Brand className="">A-Team</Navbar.Brand>
         </Link>
+        <Form className="d-flex">
+          <Form.Control
+            type="search"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+            onChange={handleChange}
+            value={searchQuery}
+          />
+        </Form>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
@@ -33,3 +48,13 @@ export default function NavBar() {
     </Navbar>
   );
 }
+
+NavBar.propTypes = {
+  searchQuery: PropTypes.string,
+  setSearchQuery: PropTypes.string,
+};
+
+NavBar.defaultProps = {
+  searchQuery: '',
+  setSearchQuery: '',
+};
