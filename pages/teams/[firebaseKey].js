@@ -4,12 +4,13 @@ import { useRouter } from 'next/router';
 import { getMembersOfTeam } from '../../api/memberData';
 import TeamMemCard from '../../components/TeamMemCard';
 
+// eslint-disable-next-line no-unused-vars
 export default function TeamMemPage({ searchQuery }) {
   const [members, setMembers] = useState([]);
   const router = useRouter();
-  const { teamFirebaseKey } = router.query;
+  const { firebaseKey } = router.query;
   const getAllMembers = () => {
-    getMembersOfTeam(teamFirebaseKey).then(setMembers);
+    getMembersOfTeam(firebaseKey).then(setMembers);
   };
 
   useEffect(() => {
@@ -17,12 +18,13 @@ export default function TeamMemPage({ searchQuery }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const filteredMembers = members.filter((mem) => mem.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  // const filteredMembers = members.filter((mem) => mem.name.toLowerCase().includes(searchQuery.toLowerCase()));
   return (
     <>
       <h1 className="text-center">Team Members</h1>
       <div className="d-flex flex-wrap">
-        {filteredMembers.map((mem) => <TeamMemCard key={mem.firebaseKey} memberObj={mem} onUpdate={getAllMembers} />)}
+        {console.warn(`members array: ${members}`)}
+        {members.slice(0, (members.length - 4)).map((mem) => <TeamMemCard key={mem.firebaseKey} memberObj={mem} onUpdate={getAllMembers} />)}
       </div>
     </>
   );

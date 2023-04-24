@@ -36,7 +36,7 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
             <Link passHref href="/team">
               <Nav.Link>Teams</Nav.Link>
             </Link>
-            <Link passHref href="/new">
+            <Link passHref href="/teams">
               <Nav.Link>New</Nav.Link>
             </Link>
             <Button className="ms-auto signOUT" variant="danger" onClick={signOut}>Sign Out</Button>
