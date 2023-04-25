@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { deleteSingleMember } from '../api/memberData';
 
-export default function TeamMemCard({ memberObj, onUpdate }) {
+export default function TeamMemCard({ memberObj, onUpdate, teamFirebaseKey }) {
   const deleteThisMember = () => {
     if (window.confirm(`Delete ${memberObj.name}?`)) {
       deleteSingleMember(memberObj.firebaseKey).then(() => onUpdate());
@@ -21,7 +21,7 @@ export default function TeamMemCard({ memberObj, onUpdate }) {
         <hr />
       </Card.Body>
       <div className="text-center bottom-center">
-        <Link href={`/newMem/${memberObj.firebaseKey}`} passHref>
+        <Link href={`/newMem/edit/${memberObj.firebaseKey}--${teamFirebaseKey}`} passHref>
           <Button variant="primary" className="editBtn">Edit</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisMember} className="m-2 deleteBtn">
@@ -42,4 +42,5 @@ TeamMemCard.propTypes = {
     team: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
+  teamFirebaseKey: PropTypes.string.isRequired,
 };
