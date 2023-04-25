@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
-import { createMember, updateMember } from '../api/memberData';
+import { createMemberOfTeam, updateMemberOfTeam } from '../api/memberData';
 
 const initialState = {
   name: '',
@@ -12,9 +12,10 @@ const initialState = {
 };
 
 export default function AddMemForm({ obj }) {
-  const [formInput, setFormInput] = useState([initialState]);
+  const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
+  const { firebaseKey } = router.query;
 
   useEffect(() => {
     if (obj.firebaseKey) {
@@ -25,19 +26,20 @@ export default function AddMemForm({ obj }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormInput({ ...formInput, [name]: value });
+    console.warn(`teamFirebaseKey being used in mem form: ${firebaseKey}`);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formInput.firebaseKey) {
-      updateMember(formInput)
-        .then(() => router.push('/team'));
+      updateMemberOfTeam(formInput, firebaseKey)
+        .then(() => router.push(`/teams/${firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
-      createMember(payload).then(({ name }) => {
+      createMemberOfTeam(payload, firebaseKey).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
-        updateMember(patchPayload).then(() => {
-          router.push('/team');
+        updateMemberOfTeam(patchPayload, firebaseKey).then(() => {
+          router.push(`/teams/${firebaseKey}`);
         });
       });
     }

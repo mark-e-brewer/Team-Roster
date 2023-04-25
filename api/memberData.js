@@ -120,14 +120,42 @@ const updateTeam = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createMemberOfTeam = (payload, teamFirebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams/${teamFirebaseKey}.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const updateMemberOfTeam = (payload, teamFirebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams/${teamFirebaseKey}/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
   getMembersByUid,
   getTeams,
   getMembersOfTeam,
   createTeam,
   createMember,
+  createMemberOfTeam,
   deleteSingleMember,
   getSingleMember,
   updateMember,
   updateTeam,
+  updateMemberOfTeam,
 };
