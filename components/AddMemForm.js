@@ -26,14 +26,14 @@ export default function AddMemForm({ obj }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormInput({ ...formInput, [name]: value });
-    console.warn(`teamFirebaseKey being used in mem form: ${firebaseKey}`);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formInput.firebaseKey) {
-      updateMemberOfTeam(formInput, firebaseKey)
-        .then(() => router.push(`/teams/${firebaseKey}`));
+      const [, teamKey] = firebaseKey.split('--');
+      updateMemberOfTeam(formInput, teamKey)
+        .then(() => router.push(`/teams/${teamKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createMemberOfTeam(payload, firebaseKey).then(({ name }) => {

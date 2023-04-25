@@ -26,6 +26,18 @@ const getTeams = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleTeam = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 const getMembersOfTeam = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${dbUrl}/teams/${firebaseKey}.json`, {
     method: 'GET',
@@ -94,6 +106,18 @@ const getSingleMember = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleMemberOfTeam = (teamFirebaseKey, memberFirebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams/${teamFirebaseKey}/${memberFirebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data)) // will resolve a single object
+    .catch(reject);
+});
+
 const updateMember = (payload) => new Promise((resolve, reject) => {
   fetch(`${dbUrl}/team/${payload.firebaseKey}.json`, {
     method: 'PATCH',
@@ -149,13 +173,15 @@ const updateMemberOfTeam = (payload, teamFirebaseKey) => new Promise((resolve, r
 export {
   getMembersByUid,
   getTeams,
+  getSingleTeam,
   getMembersOfTeam,
   createTeam,
   createMember,
-  createMemberOfTeam,
   deleteSingleMember,
   getSingleMember,
+  getSingleMemberOfTeam,
   updateMember,
   updateTeam,
+  createMemberOfTeam,
   updateMemberOfTeam,
 };

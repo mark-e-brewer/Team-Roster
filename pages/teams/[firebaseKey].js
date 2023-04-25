@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { getMembersOfTeam } from '../../api/memberData';
 import TeamMemCard from '../../components/TeamMemCard';
 // eslint-disable-next-line no-unused-vars
-export default function TeamMemPage({ searchQuery }) {
+export default function TeamMemPage({ searchQuery, teamFirebaseKey, setTeamFirebaseKey }) {
   const [members, setMembers] = useState([]);
   const router = useRouter();
   const { firebaseKey } = router.query;
@@ -31,7 +31,7 @@ export default function TeamMemPage({ searchQuery }) {
       </div>
       <div className="d-flex flex-wrap">
         {console.warn(`members array: ${members}`)}
-        {filteredMembers.map((mem) => <TeamMemCard key={mem.firebaseKey} memberObj={mem} onUpdate={getAllMembers} />)}
+        {filteredMembers.map((mem) => <TeamMemCard key={mem.firebaseKey} memberObj={mem} onUpdate={getAllMembers} teamFirebaseKey={firebaseKey} />)}
       </div>
     </>
   );
@@ -39,8 +39,12 @@ export default function TeamMemPage({ searchQuery }) {
 
 TeamMemPage.propTypes = {
   searchQuery: PropTypes.string,
+  teamFirebaseKey: PropTypes.string,
+  setTeamFirebaseKey: PropTypes.string,
 };
 
 TeamMemPage.defaultProps = {
   searchQuery: '',
+  teamFirebaseKey: '',
+  setTeamFirebaseKey: '',
 };

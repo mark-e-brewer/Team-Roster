@@ -8,6 +8,7 @@ import NavBar from '../components/NavBar';
 const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) => {
   const { user, userLoading } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
+  const [teamFirebaseKey, setTeamFirebaseKey] = useState('');
 
   // if user state is null, then show loader
   if (userLoading) {
@@ -20,7 +21,7 @@ const ViewDirectorBasedOnUserAuthStatus = ({ component: Component, pageProps }) 
       <>
         <NavBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> {/* NavBar only visible if user is logged in and is in every view */}
         <div className="container">
-          <Component {...pageProps} searchQuery={searchQuery} />
+          <Component {...pageProps} searchQuery={searchQuery} teamFirebaseKey={teamFirebaseKey} setTeamFirebaseKey={setTeamFirebaseKey} />
         </div>
       </>
     );
