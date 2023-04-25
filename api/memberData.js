@@ -82,8 +82,20 @@ const createMember = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteSingleMember = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/team/${firebaseKey}.json`, {
+const deleteSingleMemberOfTeam = (teamFirebaseKey, memberFirebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams/${teamFirebaseKey}/${memberFirebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const deleteSingleTeam = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -177,7 +189,8 @@ export {
   getMembersOfTeam,
   createTeam,
   createMember,
-  deleteSingleMember,
+  deleteSingleMemberOfTeam,
+  deleteSingleTeam,
   getSingleMember,
   getSingleMemberOfTeam,
   updateMember,
