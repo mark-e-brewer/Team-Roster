@@ -18,11 +18,13 @@ export default function TradeForm({ obj }) {
   const [allTeams, setAllTeams] = useState([]);
   const router = useRouter();
   // const { firebaseKey } = router.query;
+  // const [, teamFirebaseKey] = firebaseKey.split('--');
 
   useEffect(() => {
     setFormSelect(obj);
     console.warn(`OBJ USED FOR TRADE: ${formSelect}`);
     getTeams().then(setAllTeams);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = (e) => {
@@ -36,7 +38,15 @@ export default function TradeForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // const [memKey, teamKey] = firebaseKey.split('--');
-    const payload = { ...formSelect };
+    const payload = {
+      firebaseKey: formSelect.firebaseKey,
+      teamKey: formSelect.teamKey,
+      name: formSelect.name,
+      uid: formSelect.uid,
+      role: formSelect.role,
+      image: formSelect.image,
+    };
+    console.warn(`PAYLOAD: ${payload}`);
     createMemberOfTeam(payload, formSelect.teamKey).then(() => {
       router.push('/team');
     });
@@ -49,21 +59,18 @@ export default function TradeForm({ obj }) {
         <Form.Select
           aria-label="Teams"
           name="teamKey"
-          value={obj.teamKey}
           onChange={handleChange}
           required
-        >
-          <option value="">Select a Team</option>
-          {
-            allTeams.map((team) => (
-              <option
-                key={team.firebaseKey}
-                value={team.firebaseKey}
-              >
-                {team.teamName}
-              </option>
-            ))
-          }
+        > {
+          allTeams.map((team) => (
+            <option
+              key={team.firebaseKey}
+              value={team.firebaseKey}
+            >
+              {team.teamName}
+            </option>
+          ))
+        }
         </Form.Select>
       </FloatingLabel>
       <Button type="submit">Trade Member</Button>
@@ -79,5 +86,9 @@ TradeForm.propTypes = {
     role: PropTypes.string,
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
-  }).isRequired,
+  }),
+};
+
+TradeForm.defaultProps = {
+  obj: initialState,
 };

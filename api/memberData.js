@@ -182,6 +182,19 @@ const updateMemberOfTeam = (payload, teamFirebaseKey) => new Promise((resolve, r
     .catch(reject);
 });
 
+const updateMemberForTrade = (payload, memberKey, teamFirebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/teams/${teamFirebaseKey}/${memberKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
   getMembersByUid,
   getTeams,
@@ -197,4 +210,5 @@ export {
   updateTeam,
   createMemberOfTeam,
   updateMemberOfTeam,
+  updateMemberForTrade,
 };
