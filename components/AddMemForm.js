@@ -15,7 +15,7 @@ export default function AddMemForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
-  const { firebaseKey } = router.query;
+  const { firebaseKey } = router.query; // team firebaseKey
 
   useEffect(() => {
     if (obj.firebaseKey) {
@@ -35,7 +35,7 @@ export default function AddMemForm({ obj }) {
       updateMemberOfTeam(formInput, teamKey)
         .then(() => router.push(`/teams/${teamKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, uid: user.uid, teamKey: firebaseKey };
       createMemberOfTeam(payload, firebaseKey).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateMemberOfTeam(patchPayload, firebaseKey).then(() => {

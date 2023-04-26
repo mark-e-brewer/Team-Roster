@@ -8,7 +8,6 @@ import { deleteSingleMemberOfTeam } from '../api/memberData';
 export default function TeamMemCard({ memberObj, onUpdate, teamFirebaseKey }) {
   const deleteThisMember = () => {
     if (window.confirm(`Delete ${memberObj.name}?`)) {
-      console.warn(`teamKEY FOR DELETE: ${teamFirebaseKey}`);
       deleteSingleMemberOfTeam(teamFirebaseKey, memberObj.firebaseKey).then(() => onUpdate());
     }
   };
@@ -28,6 +27,9 @@ export default function TeamMemCard({ memberObj, onUpdate, teamFirebaseKey }) {
         <Button variant="danger" onClick={deleteThisMember} className="m-2 deleteBtn">
           Delete
         </Button>
+        <Link href={`/newMem/edit/trade/${memberObj.firebaseKey}--${teamFirebaseKey}`} passHref>
+          <Button variant="success">Trade</Button>
+        </Link>
       </div>
     </Card>
   );
