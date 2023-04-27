@@ -18,7 +18,7 @@ a {
 }
 
 body {
-  background-color: #e6e9fa;
+  background-color: #d4daff;
 }
 
 .signOUT {
@@ -35,6 +35,16 @@ body {
 
 .editBtn {
   background-color: #232ca1;
+  border: none;
+}
+
+.tradeBtn {
+  background-color: #2a522f;
+  border: none;
+}
+
+.viewBtn {
+  background-color: #3d3d3d;
   border: none;
 }
 

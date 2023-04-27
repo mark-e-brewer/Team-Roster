@@ -22,13 +22,13 @@ export default function TeamMemCard({ memberObj, onUpdate, teamFirebaseKey }) {
       </Card.Body>
       <div className="text-center bottom-center">
         <Link href={`/newMem/edit/${memberObj.firebaseKey}--${teamFirebaseKey}`} passHref>
-          <Button variant="primary" className="editBtn">Edit</Button>
+          <Button variant="primary" className="editBtn m-2 btn">Edit</Button>
         </Link>
-        <Button variant="danger" onClick={deleteThisMember} className="m-2 deleteBtn">
+        <Button variant="danger" onClick={deleteThisMember} className="m-2 deleteBtn btn">
           Delete
         </Button>
         <Link href={`/newMem/edit/trade/${memberObj.firebaseKey}--${teamFirebaseKey}`} passHref>
-          <Button variant="success">Trade</Button>
+          <Button variant="success" className="btn m-2 tradeBtn">Trade</Button>
         </Link>
       </div>
     </Card>

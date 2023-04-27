@@ -13,6 +13,7 @@ export default function TeamMemPage({ searchQuery, teamFirebaseKey, setTeamFireb
   const getAllMembers = () => {
     getMembersOfTeam(firebaseKey).then(setMembers);
   };
+  const teamOnly = members.slice((members.length - 4));
 
   useEffect(() => {
     getAllMembers();
@@ -24,9 +25,9 @@ export default function TeamMemPage({ searchQuery, teamFirebaseKey, setTeamFireb
   return (
     <>
       <div className="text-center">
-        <h1 className="text-center">Team Members</h1>
+        <h1 className="text-center">{teamOnly[2]} Members</h1>
         <Link href={`/newMem/${firebaseKey}`} passHref>
-          <Button variant="primary">Add Member</Button>
+          <Button variant="primary" className="editBtn">Add Member</Button>
         </Link>
       </div>
       <div className="d-flex flex-wrap">

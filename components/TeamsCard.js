@@ -21,12 +21,12 @@ export default function TeamsCard({ teamObj, onUpdate }) {
       </Card.Body>
       <div className="text-center bottom-center">
         <Link href={`/teams/${teamObj.firebaseKey}`} passHref>
-          <Button variant="info">View</Button>
+          <Button variant="secondary" className="btn m-2 viewBtn">View</Button>
         </Link>
         <Link href={`/teams/edit/${teamObj.firebaseKey}`} passHref>
-          <Button variant="primary">Edit</Button>
+          <Button variant="primary" className="btn m-2 editBtn">Edit</Button>
         </Link>
-        <Button variant="danger" onClick={deleteThisTeam}>Delete</Button>
+        <Button variant="danger" onClick={deleteThisTeam} className="btn m-2  deleteBtn">Delete</Button>
       </div>
     </Card>
   );
