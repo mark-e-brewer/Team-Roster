@@ -20,6 +20,7 @@ A-Team is a react/next.js project where you put together teams of user created m
   <img width="1148" src="https://user-images.githubusercontent.com/119375745/235309962-2a3f9c4d-4a11-4acd-ae3a-75270075513e.png">
   <img width="1148" src="https://user-images.githubusercontent.com/119375745/235309957-f124b11e-b0af-429f-84b8-075ea78ea405.png">
   <img width="1148" src="https://user-images.githubusercontent.com/119375745/235309938-324d8ee3-f44e-41c6-93cf-5a36150e328a.png">
+  
 ## Code Snippet
 
   const handleSubmit = (e) => {
