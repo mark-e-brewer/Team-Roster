@@ -7,7 +7,9 @@ const signIn = () => {
 };
 
 const signOut = () => {
-  firebase.auth().signOut();
+  if (window.confirm('Sign out of account?')) {
+    firebase.auth().signOut();
+  }
 };
 
 export { signIn, signOut };

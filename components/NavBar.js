@@ -3,9 +3,8 @@ import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import {
-  Navbar, Container, Nav, Button, Form,
+  Navbar, Container, Nav, Form,
 } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
 
 export default function NavBar({ searchQuery, setSearchQuery }) {
   const handleChange = (e) => {
@@ -13,7 +12,7 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="black" variant="dark">
       <Container>
         <Navbar.Brand className="">A-Team</Navbar.Brand>
         <Form className="d-flex">
@@ -39,7 +38,6 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
             <Link passHref href="/teams">
               <Nav.Link>New</Nav.Link>
             </Link>
-            <Button className="ms-auto signOUT" variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>
