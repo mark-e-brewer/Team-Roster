@@ -22,7 +22,7 @@ A-Team is a react/next.js project where you put together teams of user created m
   <img width="1148" src="https://user-images.githubusercontent.com/119375745/235309938-324d8ee3-f44e-41c6-93cf-5a36150e328a.png">
   
 ## Code Snippet
-
+```
   const handleSubmit = (e) => {
     e.preventDefault();
     const [memKey, teamKey] = firebaseKey.split('--');
@@ -43,6 +43,7 @@ A-Team is a react/next.js project where you put together teams of user created m
       });
     });
   };
+  ```
 
 ## Contributors
   - [Mark Brewer] (https://github.com/markbrew3)
