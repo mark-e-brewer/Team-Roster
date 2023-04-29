@@ -29,14 +29,14 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
-            <Link passHref href="/">
-              <Nav.Link>Profile</Nav.Link>
-            </Link>
             <Link passHref href="/team">
               <Nav.Link>Teams</Nav.Link>
             </Link>
             <Link passHref href="/teams">
               <Nav.Link>New</Nav.Link>
+            </Link>
+            <Link passHref href="/">
+              <Nav.Link>Profile</Nav.Link>
             </Link>
           </Nav>
         </Navbar.Collapse>
