@@ -83,7 +83,7 @@ export default function TradeForm({ obj }) {
         }
         </Form.Select>
       </FloatingLabel>
-      <Button type="submit" className="form-submit" id="trade-form-submit">Trade Member</Button>
+      <Button type="submit" className="form-submit mt-3" id="trade-form-submit">Trade Member</Button>
     </Form>
   );
 }

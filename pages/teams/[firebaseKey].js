@@ -27,12 +27,15 @@ export default function TeamMemPage({ searchQuery, teamFirebaseKey, setTeamFireb
       <div className="text-center">
         <h1 className="text-center" id="member-page-header">{teamOnly[2]} Members</h1>
         <Link href={`/newMem/${firebaseKey}`} passHref>
-          <Button variant="primary" className="editBtn">Add Member</Button>
+          <Button variant="primary" className="editBtn add-mem">Add Member</Button>
         </Link>
       </div>
       <div className="d-flex flex-wrap justify-content-center" id="member-page-card-div">
-        {console.warn(`members array: ${members}`)}
-        {filteredMembers.map((mem) => <TeamMemCard key={mem.firebaseKey} memberObj={mem} onUpdate={getAllMembers} teamFirebaseKey={firebaseKey} />)}
+        {filteredMembers.map((mem) => (
+          <div className="team-mem-card">
+            <TeamMemCard key={mem.firebaseKey} memberObj={mem} onUpdate={getAllMembers} teamFirebaseKey={firebaseKey} />
+          </div>
+        ))}
       </div>
     </>
   );
