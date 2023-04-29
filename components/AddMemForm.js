@@ -46,10 +46,11 @@ export default function AddMemForm({ obj }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} id="add-member-form">
       <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Team Member</h2>
       <FloatingLabel controlId="floatingInput1" label="Member Name" className="mb-3">
         <Form.Control
+          className="form-input"
           type="text"
           placeholder="Enter Member Name"
           name="name"
@@ -60,6 +61,7 @@ export default function AddMemForm({ obj }) {
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput1" label="Team Member Role" className="mb-3">
         <Form.Control
+          className="form-input"
           type="text"
           placeholder="Enter Member Role"
           name="role"
@@ -70,6 +72,7 @@ export default function AddMemForm({ obj }) {
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput1" label="Team Member Photo Url" className="mb-3">
         <Form.Control
+          className="form-input"
           type="text"
           placeholder="Enter Member Photo Url"
           name="image"
@@ -78,7 +81,7 @@ export default function AddMemForm({ obj }) {
           required
         />
       </FloatingLabel>
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Team Member</Button>
+      <Button type="submit" className="form-submit">{obj.firebaseKey ? 'Update' : 'Create'} Team Member</Button>
     </Form>
   );
 }

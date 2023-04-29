@@ -17,8 +17,8 @@ export default function TeamsPage({ searchQuery }) {
 
   return (
     <>
-      <h1 className="text-center">Teams</h1>
-      <div className="d-flex flex-wrap">
+      <h1 className="text-center" id="team-page-div">Teams</h1>
+      <div className="d-flex flex-wrap justify-content-center">
         {filteredTeams.map((team) => <TeamsCard key={team.firebaseKey} teamObj={team} onUpdate={getAllTeams} />)}
       </div>
     </>
