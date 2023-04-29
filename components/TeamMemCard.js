@@ -14,13 +14,13 @@ export default function TeamMemCard({ memberObj, onUpdate, teamFirebaseKey }) {
 
   return (
     <Card className="card mem-card" style={{ width: '15rem', margin: '8px' }}>
-      <Card.Img variant="top" src={memberObj.image} alt={memberObj.name} style={{ height: '222px' }} />
-      <Card.Body className="text-center">
+      <Card.Img variant="top" src={memberObj.image} alt={memberObj.name} style={{ height: '222px' }} className="card-img" />
+      <Card.Body className="text-center card-body">
         <Card.Title>{memberObj.name}</Card.Title>
         <Card.Subtitle>{memberObj.role}</Card.Subtitle>
         <hr />
       </Card.Body>
-      <div className="text-center bottom-center">
+      <div className="text-center bottom-center card-button-div">
         <Link href={`/newMem/edit/${memberObj.firebaseKey}--${teamFirebaseKey}`} passHref>
           <Button variant="primary" className="editBtn m-2 btn">Edit</Button>
         </Link>

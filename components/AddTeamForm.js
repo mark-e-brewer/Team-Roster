@@ -50,6 +50,7 @@ export default function AddTeamForm({ obj }) {
       <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Team</h2>
       <FloatingLabel controlId="floatingInput1" label="Team Name" className="mb-3">
         <Form.Control
+          className="form-input"
           type="text"
           placeholder="Enter Team Name"
           name="teamName"
@@ -60,6 +61,7 @@ export default function AddTeamForm({ obj }) {
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput1" label="Team Photo Url" className="mb-3">
         <Form.Control
+          className="form-input"
           type="text"
           placeholder="Enter Team Photo Url"
           name="teamImage"
@@ -68,7 +70,7 @@ export default function AddTeamForm({ obj }) {
           required
         />
       </FloatingLabel>
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Team</Button>
+      <Button type="submit" className="form-submit">{obj.firebaseKey ? 'Update' : 'Create'} Team</Button>
     </Form>
   );
 }

@@ -58,10 +58,12 @@ export default function TradeForm({ obj }) {
   const filteredTeams = allTeams.filter((team) => team.firebaseKey !== obj.teamKey);
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} id="trade-form">
       <h2 className="text-black mt-5">Select Team for trade</h2>
       <FloatingLabel controlId="floatingSelect" label="Teams">
         <Form.Select
+          className="form-select"
+          id="trade-form-select"
           aria-label="Teams"
           name="teamKey"
           defaultValue={obj.teamKey}
@@ -81,7 +83,7 @@ export default function TradeForm({ obj }) {
         }
         </Form.Select>
       </FloatingLabel>
-      <Button type="submit">Trade Member</Button>
+      <Button type="submit" className="form-submit" id="trade-form-submit">Trade Member</Button>
     </Form>
   );
 }
